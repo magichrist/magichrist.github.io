@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magichrist</title>
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+
+<header>
+  <div class="container">
+    <h1>Magichrist</h1>
+    <p>Code Alchemist & Dark Web Wizard</p>
+    <div class="socials">
+      <a href="https://github.com/magichrist" target="_blank">GitHub</a>
+      <a href="https://twitter.com/magichrist" target="_blank">Twitter</a>
+      <a href="https://instagram.com/magichrist" target="_blank">Instagram</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I’m a programmer who weaves Python, Rust, Web3, and magic into modern digital creations.<br>
+      I build dApps, analyze data, and explore the arcane intersections of technology and art.</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div class="skill">Python</div>
+        <div class="skill">Rust</div>
+        <div class="skill">Django</div>
+        <div class="skill">Flask</div>
+        <div class="skill">Web3 / Smart Contracts</div>
+        <div class="skill">DuckDB / Polars</div>
+        <div class="skill">TensorFlow / ML</div>
+        <div class="skill">Alpine.js / Tailwind</div>
+        <div class="skill">Swift / Tauri</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <ul class="projects-list">
+        <li>
+          <div class="project-left">
+            <strong>Proxy Tester</strong>
+            <p>Test and validate proxies at scale with interactive reports.</p>
+          </div>
+          <div class="project-right">
+            <a href="https://github.com/magichrist/proxy_tester" target="_blank">View on GitHub</a>
+          </div>
+        </li>
+        <li>
+          <div class="project-left">
+            <strong>Ethereum ICO dApp</strong>
+            <p>ICO on Ethereum Blockchain</p>
+          </div>
+          <div class="project-right">
+            <a href="https://github.com/magichrist/ICO_ERC20" target="_blank">View on GitHub</a>
+          </div>
+        </li>
+        <li>
+          <div class="project-left">
+            <strong>Art / NFTs</strong>
+            <p>Minimalist digital art with magical and occult aesthetics.</p>
+          </div>
+          <div class="project-right">
+            <a href="#" target="_blank">Explore Art</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Reach me in the dark corners of the internet:</p>
+      <div class="socials">
+        <a href="mailto:magichrist@example.com">Email</a>
+        <a href="https://github.com/magichrist" target="_blank">GitHub</a>
+        <a href="https://twitter.com/magichrist" target="_blank">Twitter</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Magichrist | All rights reserved | Crafted with dark code ✨</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Auto-update year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Skills interactivity: glow on hover
+  document.querySelectorAll('.skill').forEach(skill => {
+    skill.addEventListener('mouseenter', () => skill.classList.add('glow'));
+    skill.addEventListener('mouseleave', () => skill.classList.remove('glow'));
+  });
+</script>
+</body>
+</html>

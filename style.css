@@ -1,0 +1,62 @@
+/* Global */
+* { margin:0; padding:0; box-sizing:border-box; }
+body, html { font-family:'Roboto',sans-serif; background:#000; color:#fff; overflow-x:hidden; }
+a { color:#f0c674; text-decoration:none; }
+a:hover { color:#ff7fff; }
+.container { max-width:1200px; margin:auto; padding:2rem; }
+#bgCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
+
+/* Header */
+header { text-align:center; padding:100px 0; position:relative; z-index:1; }
+header h1 { font-family:'Uncial Antiqua',cursive; font-size:4rem; color:#ff7fff; text-shadow:0 0 10px #ff7fff; }
+header p { font-size:1.5rem; margin:1rem 0; color:#ccc; }
+.socials a { margin:0 1rem; font-weight:bold; transition:0.3s; }
+
+/* Sections */
+section, main, footer { position:relative; z-index:1; }
+section { padding:100px 0; text-align:center; background:rgba(0,0,0,0.7); }
+h2 { font-size:2.5rem; margin-bottom:2rem; color:#f0c674; text-shadow:0 0 5px #f0c674; }
+
+/* Skills */
+.skill-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap:15px; max-width:800px; margin:auto; }
+.skill { padding:10px 15px; border:2px solid #ff7fff; border-radius:10px; transition:0.3s; cursor:pointer; }
+.skill:hover, .skill.glow { transform:scale(1.1); box-shadow:0 0 15px #ff7fff; }
+
+/* Projects */
+.projects-list { list-style:none; max-width:800px; margin:auto; text-align:left; padding:0; }
+.projects-list li { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding:15px; border:2px solid #f0c674; border-radius:10px; transition:0.3s; }
+.projects-list li:hover { background:#f0c67422; transform:scale(1.02); }
+.project-left { max-width:70%; }
+.project-right a { font-weight:bold; color:#ff7fff; transition:0.3s; }
+.project-right a:hover { color:#f0c674; }
+
+/* Contact */
+.socials { margin-top:15px; }
+
+/* Footer */
+footer { text-align:center; padding:50px 0; background:#111; border-top:1px solid #333; font-size:0.9rem; }
+
+/* Footer */
+footer {
+  background: linear-gradient(180deg, #000 0%, #111 100%);
+  text-align: center;
+  padding: 60px 20px;
+  color: #f0c674;
+  font-size: 0.95rem;
+  text-shadow: 0 0 8px #ff7fff, 0 0 4px #f0c674;
+  border-top: 1px solid #333;
+  position: relative;
+  z-index: 1;
+}
+
+footer a {
+  color: #ff7fff;
+  font-weight: bold;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  color: #f0c674;
+  text-shadow: 0 0 10px #f0c674, 0 0 5px #ff7fff;
+}
