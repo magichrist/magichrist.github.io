@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Proxy Tester - Check Proxy Availability & Speed Online</title>
+  <meta name="description" content="Test your proxies for availability, speed, and reliability with Proxy Tester. Upload a proxy list or test single proxies instantly.">
+  <meta name="keywords" content="proxy tester, proxy checker, test proxies, proxy speed, proxy list, IP proxy, HTTP proxy, SOCKS proxy">
+  <meta name="author" content="MagicChrist">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Proxy Tester - Check Proxy Availability & Speed">
+  <meta property="og:description" content="Test your proxies for availability, speed, and reliability online. Supports bulk proxy lists.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/magichrist/proxy_tester">
+  <meta property="og:image" content="https://raw.githubusercontent.com/magichrist/proxy_tester/main/assets/proxy.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Proxy Tester - Check Proxy Availability & Speed">
+  <meta name="twitter:description" content="Test your proxies for availability, speed, and reliability online. Supports bulk proxy lists.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/magichrist/proxy_tester/main/assets/proxy.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://raw.githubusercontent.com/magichrist/proxy_tester/main/assets/favicon.ico" type="image/x-icon">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4 mb-6">
+    <h1 class="text-3xl font-bold text-center">Proxy Tester</h1>
+    <p class="text-center text-gray-600 mt-2">Check proxy availability, speed, and reliability online</p>
+  </header>
+
+  <main class="max-w-4xl mx-auto space-y-6">
+
+    <!-- Upload Form -->
+    <section class="bg-white p-6 rounded-md shadow">
+      <h2 class="text-2xl font-semibold mb-4">Upload Proxy List</h2>
+      <p class="mb-2 text-gray-600">Upload a .txt file containing one proxy per line (IP:PORT) or test a single proxy.</p>
+      <input type="file" id="proxyFile" accept=".txt"
+             class="block w-full text-sm text-gray-600
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-blue-500 file:text-white
+                    hover:file:bg-blue-600 mb-4">
+
+      <button id="runTest"
+              class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded">
+        Run Tests
+      </button>
+    </section>
+
+    <!-- Results Table -->
+    <section class="bg-white p-6 rounded-md shadow">
+      <h2 class="text-2xl font-semibold mb-4">Results</h2>
+      <table class="min-w-full border bg-gray-50">
+        <thead class="bg-gray-200 text-left">
+          <tr>
+            <th class="p-2 border">Proxy</th>
+            <th class="p-2 border">Status</th>
+            <th class="p-2 border">Response Time (ms)</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </section>
+
+    <!-- About Section for SEO -->
+    <section class="bg-white p-6 rounded-md shadow">
+      <h2 class="text-2xl font-semibold mb-4">About Proxy Tester</h2>
+      <p class="mb-2 text-gray-700">
+        Proxy Tester is an open-source Python tool to check the availability, speed, and reliability of proxies. It supports HTTP and SOCKS proxies, bulk proxy lists, and detailed response metrics.
+      </p>
+      <p class="mb-2 text-gray-700">
+        Use this tool to verify proxies for web scraping, automation, privacy, or testing network connectivity. Designed for developers and network enthusiasts.
+      </p>
+      <p class="text-gray-700">
+        Visit the <a href="https://github.com/magichrist/proxy_tester" class="text-blue-500 hover:underline">GitHub repository</a> for full source code, installation instructions, and API integration.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="mt-6 py-4 text-center text-gray-500 text-sm">
+    &copy; 2026 MagicChrist - <a href="https://github.com/magichrist/proxy_tester" class="hover:underline text-blue-500">GitHub Repository</a>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const proxyFileInput = document.getElementById('proxyFile');
+    const runTestBtn = document.getElementById('runTest');
+    const resultsBody = document.getElementById('resultsBody');
+
+    runTestBtn.addEventListener('click', async () => {
+      const files = proxyFileInput.files;
+      if (!files.length) {
+        alert('Please upload a proxy list file.');
+        return;
+      }
+
+      const fileText = await files[0].text();
+      const proxies = fileText.trim().split(/\r?\n/).filter(l => l);
+
+      resultsBody.innerHTML = '';
+      proxies.forEach(proxy => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="p-2 border">${proxy}</td>
+          <td class="p-2 border">Waiting...</td>
+          <td class="p-2 border">—</td>
+        `;
+        resultsBody.appendChild(row);
+      });
+
+      // Example: POST proxies to backend
+      try {
+        const resp = await fetch('/api/test_proxies', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ proxies })
+        });
+
+        const data = await resp.json();
+
+        data.results.forEach((r, i) => {
+          const tr = resultsBody.children[i];
+          tr.cells[1].textContent = r.status;
+          tr.cells[2].textContent = r.time ?? '—';
+        });
+
+      } catch (err) {
+        console.error(err);
+        alert('Error testing proxies.');
+      }
+    });
+  </script>
+
+</body>
+</html>
