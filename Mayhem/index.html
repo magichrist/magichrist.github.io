@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Mayhem — Chaos Engineering for Docker &amp; Podman</title>
+  <meta name="description" content="Mayhem is an open-source chaos engineering tool for Docker and Podman — discover your system, break it on purpose, prove it recovers, every time with evidence.">
+  <meta name="keywords" content="Mayhem, chaos engineering, fault injection, resilience testing, Docker, Podman, mayhem-cli, Magichrist, system testing, chaos testing">
+  <meta name="author" content="Magichrist">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://magichrist.github.io/Mayhem/">
+
+  <meta property="og:title" content="Mayhem — Chaos Engineering for Docker &amp; Podman">
+  <meta property="og:description" content="Discover your system, break it on purpose, prove it recovers — every time, with evidence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://magichrist.github.io/Mayhem/">
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; line-height:1.7; margin:0; padding:2rem; background:#0f0a18; color:#e5e7eb; }
+    main { max-width:860px; margin:auto; }
+    h1, h2 { color:#f8fafc; }
+    h1 { font-size:2.4rem; margin-bottom:.4rem; }
+    .tagline { color:#a78bfa; font-size:1.1rem; margin:0 0 2rem; }
+    a { color:#f97316; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .cta { margin:1.5rem 0; padding:1rem; background:#1c0f10; border-left:4px solid #f97316; }
+    .cta a { font-weight:700; }
+    .links { margin:1.5rem 0; display:flex; gap:1rem; flex-wrap:wrap; }
+    .links a { padding:.6rem 1.2rem; background:#1c0f10; border:1px solid #f97316; border-radius:8px; font-weight:600; transition:background .2s; }
+    .links a:hover { background:#f973161a; text-decoration:none; }
+    ul { padding-left:1.3rem; }
+    li { margin-bottom:.35rem; }
+    footer { margin-top:3rem; font-size:.9rem; color:#9ca3af; border-top:1px solid #222; padding-top:1rem; }
+    footer a { color:#a78bfa; }
+  </style>
+</head>
+
+<body>
+<main>
+  <h1>Mayhem</h1>
+  <p class="tagline">Chaos engineering for Docker &amp; Podman — break it on purpose, prove it recovers.</p>
+
+  <p>
+    <strong>Mayhem</strong> is an open-source chaos engineering tool that lets you <em>discover</em> your running
+    container infrastructure, <em>inject real faults</em> — kill processes, consume resources, corrupt configs —
+    and <em>prove your system recovers</em>. Every run produces structured evidence you can review, share, and audit.
+  </p>
+
+  <div class="links">
+    <a href="https://github.com/magichrist/Mayhem" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://pypi.org/project/mayhem-cli/" target="_blank" rel="noopener">PyPI — pip install mayhem-cli</a>
+  </div>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li><strong>Auto-discover</strong> your Docker / Podman containers and services</li>
+    <li><strong>Inject faults</strong> — process kill, resource exhaustion, network disruption, config corruption</li>
+    <li><strong>Prove recovery</strong> — validates your system returns to healthy state after each fault</li>
+    <li><strong>Evidence reports</strong> — structured output you can share, log, or feed into CI/CD</li>
+    <li><strong>Kubernetes support</strong> on the roadmap</li>
+  </ul>
+
+  <h2>Quick Install</h2>
+  <div class="cta">
+    <code>pip install mayhem-cli</code>
+  </div>
+
+  <h2>Why Chaos Engineering?</h2>
+  <p>
+    Your containers will fail in production — network partitions, OOM kills, dependency outages. Chaos
+    engineering answers: <em>does your system actually recover when that happens?</em> Mayhem makes
+    answering that question systematic, repeatable, and auditable.
+  </p>
+
+  <h2>Who Is This For?</h2>
+  <p>
+    Platform engineers, SREs, DevOps teams, and backend developers who ship containerised services
+    and want to validate resilience <em>before</em> production incidents happen.
+  </p>
+
+  <footer>
+    <p><a href="https://magichrist.github.io/">Magichrist</a> · Project: Mayhem · <a href="https://github.com/magichrist/Mayhem">GitHub</a></p>
+  </footer>
+</main>
+</body>
+</html>
