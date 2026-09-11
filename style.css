@@ -44,6 +44,8 @@ h2 { font-size:2.5rem; margin-bottom:2rem; color:#f0c674; text-shadow:0 0 5px #f
 .projects-list li { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding:15px; border:2px solid #f0c674; border-radius:10px; transition:0.3s; }
 .projects-list li:hover { background:#f0c67422; transform:scale(1.02); }
 .project-left { max-width:70%; }
+.project-left a.project-title { color:#fff; transition:color .2s, text-shadow .2s; }
+.project-left a.project-title:hover { color:#f0c674; text-shadow:0 0 8px #f0c674; }
 .project-right a { font-weight:bold; color:#ff7fff; transition:0.3s; }
 .project-right a:hover { color:#f0c674; }
 
