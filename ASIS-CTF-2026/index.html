@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ASIS CTF 2026 — Challenge Archive &amp; Solutions by Magichrist</title>
+  <meta name="description" content="Public ASIS CTF 2026 challenge archive by Magichrist: captured challenge material, optimized solution code, and rewritten documentation for cryptography and reverse-engineering challenges.">
+  <meta name="keywords" content="ASIS CTF 2026, CTF solutions, capture the flag, cryptography CTF, reverse engineering CTF, lattice attack, NTRU, GF(16) oil and vinegar, AES GCM, Merkle, CTF writeup, Magichrist">
+  <meta name="author" content="Magichrist">
+  <meta name="robots" content="index, follow, max-snippet:-1">
+  <link rel="canonical" href="https://magichrist.github.io/ASIS-CTF-2026/">
+
+  <meta property="og:title" content="ASIS CTF 2026 — Challenge Archive &amp; Solutions">
+  <meta property="og:description" content="Captured challenge material, optimized solutions, and rewritten technical documentation for ASIS CTF 2026 crypto and RE challenges.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://magichrist.github.io/ASIS-CTF-2026/">
+  <meta property="og:image" content="https://magichrist.github.io/og-image.svg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ASIS CTF 2026 — Challenge Archive &amp; Solutions">
+  <meta name="twitter:description" content="Crypto and reverse-engineering challenge archive with optimized solutions and rewritten documentation.">
+  <meta name="twitter:image" content="https://magichrist.github.io/og-image.svg">
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; line-height:1.7; margin:0; padding:2rem; background:#0b0f0a; color:#e5e7eb; }
+    main { max-width:860px; margin:auto; }
+    h1, h2 { color:#f8fafc; }
+    h1 { font-size:2.3rem; margin-bottom:.4rem; }
+    .tagline { color:#a3e635; font-size:1.1rem; margin:0 0 2rem; }
+    a { color:#a3e635; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .cta { margin:1.5rem 0; padding:1rem; background:#0f1a08; border-left:4px solid #a3e635; }
+    .cta a { font-weight:700; }
+    .links { margin:1.5rem 0; display:flex; gap:1rem; flex-wrap:wrap; }
+    .links a { padding:.6rem 1.2rem; background:#0f1a08; border:1px solid #a3e635; border-radius:8px; font-weight:600; transition:background .2s; }
+    .links a:hover { background:#a3e6351a; text-decoration:none; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; margin:1rem 0 2rem; }
+    .chip { font-size:.78rem; padding:3px 10px; border:1px solid rgba(163,230,53,.45); border-radius:999px; color:#a3e635; background:rgba(163,230,53,.07); }
+    .challenge { margin:1.5rem 0; }
+    .challenge h3 { color:#d9f99d; margin-bottom:.3rem; font-size:1.05rem; }
+    .challenge p { margin:.2rem 0; color:#cbd5e1; }
+    .note { font-size:.9rem; color:#94a3b8; }
+    code { background:#0f1a08; padding:.15rem .4rem; border-radius:4px; }
+    footer { margin-top:3rem; font-size:.9rem; color:#9ca3af; border-top:1px solid #222; padding-top:1rem; }
+    footer a { color:#a3e635; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "ASIS CTF 2026 — Challenge Archive & Solutions",
+    "url": "https://magichrist.github.io/ASIS-CTF-2026/",
+    "description": "Public ASIS CTF 2026 challenge archive with captured challenge material, optimized solution code, and rewritten technical documentation for cryptography and reverse-engineering challenges.",
+    "author": { "@type": "Person", "name": "Magichrist", "url": "https://magichrist.github.io/" },
+    "inLanguage": "en"
+  }
+  </script>
+</head>
+
+<body>
+<main>
+  <h1>ASIS CTF 2026</h1>
+  <p class="tagline">Challenge archive &amp; solutions — cryptography and reverse engineering.</p>
+
+  <p>
+    This repository is a public <strong>ASIS CTF 2026</strong> challenge archive containing captured challenge
+    material, optimized solution code, and rewritten technical documentation. Each challenge has a dedicated
+    write-up covering protocol details, cryptanalysis, attack steps, mathematical derivations, and implementation
+    caveats.
+  </p>
+
+  <div class="links">
+    <a href="https://github.com/magichrist/ASIS-CTF-2026" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+  <h2>Challenges</h2>
+  <div class="chips">
+    <span class="chip">Fence</span>
+    <span class="chip">Headache</span>
+    <span class="chip">Mario</span>
+    <span class="chip">Pancake</span>
+    <span class="chip">Sultan</span>
+    <span class="chip">linchan</span>
+    <span class="chip">Less Is More</span>
+  </div>
+
+  <div class="challenge">
+    <h3>Fence</h3>
+    <p>NTRU-like negacyclic lattice attack combined with an XOR-accreted stream cipher.</p>
+  </div>
+  <div class="challenge">
+    <h3>Headache</h3>
+    <p>Numerical system identification of a 60-parameter nonlinear oracle.</p>
+  </div>
+  <div class="challenge">
+    <h3>Mario</h3>
+    <p>GF(16) oil-and-vinegar multivariate quadratic key recovery from leaked report vectors.</p>
+  </div>
+  <div class="challenge">
+    <h3>Pancake</h3>
+    <p>AES partial-collision search causing GCM keystream reuse.</p>
+  </div>
+  <div class="challenge">
+    <h3>Sultan</h3>
+    <p>Flask web challenge with bounded modular transcripts and lattice recovery.</p>
+  </div>
+  <div class="challenge">
+    <h3>linchan</h3>
+    <p>GF(2) matrix-code similarity with planted rank-25 structures and conjugator recovery.</p>
+  </div>
+  <div class="challenge">
+    <h3>Less Is More</h3>
+    <p>Merkle openings, noisy subset equations, and projective-key recovery.</p>
+  </div>
+
+  <h2>Notes</h2>
+  <ul class="note">
+    <li>Solutions, analysis, and documentation in this archive were optimized and rewritten with AI assistance.</li>
+    <li>The documentation is a study reference and is not a substitute for the original challenge infrastructure.</li>
+    <li>Read the repository README for per-challenge details and caveats.</li>
+  </ul>
+
+  <footer>
+    <p><a href="https://magichrist.github.io/">Magichrist</a> · Project: ASIS CTF 2026 · <a href="https://github.com/magichrist/ASIS-CTF-2026">GitHub</a></p>
+  </footer>
+</main>
+</body>
+</html>
