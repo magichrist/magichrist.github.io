@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Kali MCP — Model Context Protocol Server for Kali Linux</title>
+  <meta name="description" content="Kali MCP is a production-grade Model Context Protocol (MCP) server that exposes 56 Kali Linux penetration-testing tools — nmap, sqlmap, nuclei, metasploit, and more — to AI agents.">
+  <meta name="keywords" content="Kali MCP, Model Context Protocol, MCP server, Kali Linux, security tools, pentest, AI agents, LLM, cybersecurity, nmap, sqlmap, nuclei, metasploit, Magichrist">
+  <meta name="author" content="Magichrist">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://magichrist.github.io/kali-mcp/">
+
+  <meta property="og:title" content="Kali MCP — MCP Server for Kali Linux">
+  <meta property="og:description" content="Put 56 Kali Linux pentesting tools at your AI agent's fingertips via the Model Context Protocol.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://magichrist.github.io/kali-mcp/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kali MCP — MCP Server for Kali Linux">
+  <meta name="twitter:description" content="Put 56 Kali Linux pentesting tools at your AI agent's fingertips via the Model Context Protocol.">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      background: #0b0d13;
+      color: #e5e7eb;
+    }
+    main {
+      max-width: 860px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #f8fafc;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .tagline {
+      color: #c58af2;
+      font-size: 1.1rem;
+      margin: 0 0 2rem;
+    }
+    a {
+      color: #c58af2;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .cta {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #0a0b10;
+      border-left: 4px solid #c58af2;
+    }
+    .cta code {
+      color: #fab387;
+    }
+    .links {
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .links a {
+      padding: 0.6rem 1.2rem;
+      background: #0a0b10;
+      border: 1px solid #c58af2;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .links a:hover {
+      background: #c58af21a;
+      text-decoration: none;
+    }
+    ul {
+      padding-left: 1.3rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      border-top: 1px solid #222;
+      padding-top: 1rem;
+    }
+    footer a {
+      color: #c58af2;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+  <h1>Kali MCP</h1>
+  <p class="tagline">A warm, expressive MCP server that puts 56 Kali Linux pentesting tools at your AI agent's fingertips.</p>
+
+  <p>
+    <strong>Kali MCP</strong> is a production-grade <em>Model Context Protocol (MCP)</em> server that exposes Kali Linux
+    penetration-testing tools — nmap, sqlmap, nuclei, hydra, metasploit, ffuf, katana, subfinder, amass, bettercap,
+    responder, zap, wpscan, and 44 more — to AI agents. Every tool call is validated against a JSON schema, every
+    execution is sandboxed with timeouts, and every result is stored in a shared inter-agent vault.
+  </p>
+
+  <div class="links">
+    <a href="https://github.com/magichrist/kali-mcp" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://pypi.org/project/kmcp/" target="_blank" rel="noopener">PyPI — pip install kmcp</a>
+  </div>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li><strong>56 native Kali tool wrappers</strong> — nmap, sqlmap, nuclei, hydra, metasploit, ffuf, katana, subfinder, amass, bettercap, responder, zap, wpscan, and more</li>
+    <li><strong>generic_command</strong> — escape hatch to run any shell command or pipeline not covered by a native wrapper</li>
+    <li><strong>python_command</strong> — execute Python scripts directly on the host</li>
+    <li><strong>Playbooks</strong> — multi-step pipelines (recon, webapp, AD, custom) with <code>{{target}}</code> substitution and resume support</li>
+    <li><strong>parallel_execute</strong> — fan out to multiple tools concurrently, then aggregate and deduplicate results</li>
+    <li><strong>Inter-agent vault</strong> — SQLite-backed knowledge store; any agent can write findings, credentials, or notes and query them back</li>
+    <li><strong>Live monitor TUI</strong> — <code>kmcp monitor</code> shows connected users, running jobs, and server health with SSE push</li>
+    <li><strong>Safety</strong> — 3-layer timeout defense, process-tree cleanup, semaphore limits, output truncation</li>
+  </ul>
+
+  <h2>Quick Install</h2>
+  <div class="cta">
+    <code>pip install kmcp</code><br>
+    <code>kmcp start</code>
+  </div>
+
+  <p>The server listens on <code>http://0.0.0.0:8399/mcp</code> by default (HTTP/SSE or streamable-http). Point your MCP client at that URL.</p>
+
+  <h2>Who Is This For?</h2>
+  <p>
+    Security researchers, red teamers, and AI engineers building LLM-powered security workflows who want to orchestrate
+    Kali Linux tools through the Model Context Protocol — with validation, sandboxing, and shared memory between agents.
+  </p>
+
+  <footer>
+    <p><a href="https://magichrist.github.io/">Magichrist</a> · Project: Kali MCP · <a href="https://github.com/magichrist/kali-mcp">GitHub</a> · <a href="https://pypi.org/project/kmcp/">PyPI</a></p>
+  </footer>
+</main>
+</body>
+</html>

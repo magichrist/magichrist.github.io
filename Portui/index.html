@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Portui — Ports Explorer: macOS Process & Socket TUI</title>
+  <meta name="description" content="Portui (Ports Explorer) is an interactive terminal explorer for macOS processes, network sockets, and open file descriptors — lsof and psutil, but make them pretty. Built with Python and Textual.">
+  <meta name="keywords" content="Portui, Ports Explorer, port explorer, macOS TUI, terminal UI, lsof, psutil, network sockets, process browser, file descriptors, Python, Textual, Magichrist">
+  <meta name="author" content="Magichrist">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://magichrist.github.io/Portui/">
+
+  <meta property="og:title" content="Portui — Ports Explorer: macOS Process & Socket TUI">
+  <meta property="og:description" content="An interactive terminal explorer for macOS processes, network sockets, and open file descriptors — lsof and psutil, but make them pretty.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://magichrist.github.io/Portui/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Portui — Ports Explorer: macOS Process & Socket TUI">
+  <meta name="twitter:description" content="An interactive terminal explorer for macOS processes, network sockets, and open file descriptors — lsof and psutil, but make them pretty.">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      background: #14121b;
+      color: #e5e7eb;
+    }
+    main {
+      max-width: 860px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #f8fafc;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .tagline {
+      color: #ffd93d;
+      font-size: 1.1rem;
+      margin: 0 0 2rem;
+    }
+    a {
+      color: #ffd93d;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .cta {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #0a0a0f;
+      border-left: 4px solid #ffd93d;
+    }
+    .cta code {
+      color: #ff9f43;
+    }
+    .links {
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .links a {
+      padding: 0.6rem 1.2rem;
+      background: #0a0a0f;
+      border: 1px solid #ffd93d;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .links a:hover {
+      background: #ffd93d1a;
+      text-decoration: none;
+    }
+    ul {
+      padding-left: 1.3rem;
+    }
+    li {
+      margin-bottom: 0.35rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .badge-python { background: #b983ff; color: #140f1b; }
+    .badge-textual { background: #4ecdc4; color: #140f1b; }
+    .badge-macos { background: #ff9f43; color: #140f1b; }
+    .badge-license { background: #6bcb77; color: #140f1b; }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      border-top: 1px solid #222;
+      padding-top: 1rem;
+    }
+    footer a {
+      color: #ffd93d;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+  <h1>Portui</h1>
+  <p class="tagline">Ports Explorer — <em>lsof</em> and <em>psutil</em>, but make them pretty.</p>
+
+  <div style="margin-bottom: 2rem;">
+    <span class="badge badge-python">Python 3.12+</span>
+    <span class="badge badge-textual">Built with Textual</span>
+    <span class="badge badge-macos">macOS only</span>
+    <span class="badge badge-license">MIT license</span>
+    <span class="badge badge-python">281 tests passing</span>
+  </div>
+
+  <p>
+    <strong>Portui</strong> (Ports Explorer) is an interactive terminal explorer for macOS processes, network sockets,
+    and open file descriptors. It shows you what's listening, who owns it, and what it has open — with six
+    candy-coloured themes, keyboard-first navigation, and honest reporting when macOS hides something.
+  </p>
+
+  <div class="links">
+    <a href="https://github.com/magichrist/Portui" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li><strong>Process browser</strong> — every visible process with PID, PPID, user, CPU, memory, runtime, status, and full path; searchable by any field</li>
+    <li><strong>Six focus views</strong> — Overview, network connections, TCP listeners, files, UNIX sockets, and all open descriptors</li>
+    <li><strong>Field-scoped search</strong> — <code>port=8080</code>, <code>state=LISTEN</code>, <code>proto=UDP</code>, <code>rport=443</code>, <code>lip=127.0.0.1</code>, <code>fd=10</code>, or plain words</li>
+    <li><strong>Responsive tables</strong> — sheds low-priority columns as your terminal narrows</li>
+    <li><strong>Six themes</strong> — Gummy, Midnight, Tokyo Night, Gruvbox, Nebula, Daylight; switch live with <kbd>Ctrl+T</kbd></li>
+    <li><strong>Honest output</strong> — permissions stated, never faked; unavailable values render as <code>—</code>, not <code>0</code></li>
+    <li><strong>Read-only, mostly</strong> — nothing closes a connection or deletes a file; process termination takes two deliberate keystrokes</li>
+  </ul>
+
+  <h2>Quick Install</h2>
+  <div class="cta">
+    <code>brew install lsof</code><br>
+    <code>git clone https://github.com/magichrist/Portui</code><br>
+    <code>cd Portui</code><br>
+    <code>python3 -m pip install -e .</code><br>
+    <code>ports-explorer</code>
+  </div>
+
+  <p>Requires Python 3.12+ and macOS <code>lsof</code>.</p>
+
+  <h2>Who Is This For?</h2>
+  <p>
+    macOS developers and security researchers who want a clear, honest, keyboard-driven view of what's running on
+    their machine — which processes own which sockets, which files are open, and what's listening on the network.
+  </p>
+
+  <footer>
+    <p><a href="https://magichrist.github.io/">Magichrist</a> · Project: Portui · <a href="https://github.com/magichrist/Portui">GitHub</a></p>
+  </footer>
+</main>
+</body>
+</html>
