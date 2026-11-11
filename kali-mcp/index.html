@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Kali MCP — Model Context Protocol Server for Kali Linux</title>
-  <meta name="description" content="Kali MCP is a production-grade Model Context Protocol (MCP) server that exposes 56 Kali Linux penetration-testing tools — nmap, sqlmap, nuclei, metasploit, and more — to AI agents.">
-  <meta name="keywords" content="Kali MCP, Model Context Protocol, MCP server, Kali Linux, security tools, pentest, AI agents, LLM, cybersecurity, nmap, sqlmap, nuclei, metasploit, Magichrist">
+  <meta name="description" content="Kali MCP is a production-grade Model Context Protocol (MCP) server that exposes 56 Kali Linux penetration-testing tools — nmap, sqlmap, nuclei, metasploit, and more — to AI agents via the kmcp pip package.">
+  <meta name="keywords" content="Kali MCP, kmcp, Model Context Protocol, MCP server, Kali Linux, security tools, pentest, AI agents, LLM, cybersecurity, nmap, sqlmap, nuclei, metasploit, Magichrist">
   <meta name="author" content="Magichrist">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://magichrist.github.io/kali-mcp/">
 
   <meta property="og:title" content="Kali MCP — MCP Server for Kali Linux">
-  <meta property="og:description" content="Put 56 Kali Linux pentesting tools at your AI agent's fingertips via the Model Context Protocol.">
+  <meta property="og:description" content="Put 56 Kali Linux pentesting tools at your AI agent's fingertips via the Model Context Protocol. Install: pip install kmcp.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://magichrist.github.io/kali-mcp/">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Kali MCP — MCP Server for Kali Linux">
-  <meta name="twitter:description" content="Put 56 Kali Linux pentesting tools at your AI agent's fingertips via the Model Context Protocol.">
+  <meta name="twitter:description" content="Put 56 Kali Linux pentesting tools at your AI agent's fingertips via the Model Context Protocol. Install: pip install kmcp.">
 
   <style>
     body {
@@ -85,6 +85,20 @@
     li {
       margin-bottom: 0.35rem;
     }
+    .warning {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: #450a0a;
+      border-left: 4px solid #f87171;
+      border-radius: 8px;
+    }
+    .warning p {
+      margin: 0;
+      color: #fecaca;
+    }
+    .warning strong {
+      color: #fca5a5;
+    }
     footer {
       margin-top: 3rem;
       font-size: 0.9rem;
@@ -94,6 +108,12 @@
     }
     footer a {
       color: #c58af2;
+    }
+    code {
+      color: #fab387;
+      background: rgba(250, 179, 99, 0.1);
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -110,9 +130,27 @@
     execution is sandboxed with timeouts, and every result is stored in a shared inter-agent vault.
   </p>
 
+  <p>
+    Install from PyPI as <code>kmcp</code> (the repo is <code>kali-mcp</code>):
+  </p>
+
+  <div class="cta">
+    <code>pip install kmcp</code><br>
+    <code>kmcp init</code> &nbsp;→&nbsp; generate <code>.env</code> with a secure <code>MCP_API_TOKEN</code><br>
+    <code>kmcp start</code> &nbsp;→&nbsp; server on <code>http://0.0.0.0:8399</code><br>
+    <code>kmcp studio</code> &nbsp;→&nbsp; open the Playbook Studio UI
+  </div>
+
   <div class="links">
     <a href="https://github.com/magichrist/kali-mcp" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://pypi.org/project/kmcp/" target="_blank" rel="noopener">PyPI — pip install kmcp</a>
+    <a href="https://pypi.org/project/kmcp/" target="_blank" rel="noopener">PyPI — kmcp</a>
+  </div>
+
+  <div class="warning">
+    <strong>⚠️ Security warning:</strong> This server executes real offensive security tooling. Expose it only on a
+    <strong>trusted local network</strong> — never on the public internet or in untrusted environments. Always set
+    <code>MCP_API_TOKEN</code> when exposing beyond localhost, and ensure you have explicit authorization for every
+    target you scan.
   </div>
 
   <h2>Key Features</h2>
@@ -122,27 +160,29 @@
     <li><strong>python_command</strong> — execute Python scripts directly on the host</li>
     <li><strong>Playbooks</strong> — multi-step pipelines (recon, webapp, AD, custom) with <code>{{target}}</code> substitution and resume support</li>
     <li><strong>parallel_execute</strong> — fan out to multiple tools concurrently, then aggregate and deduplicate results</li>
+    <li><strong>Playbook Studio</strong> — built-in operator web UI at <code>/studio</code> for authoring, validating, publishing, and running multi-step playbooks</li>
     <li><strong>Inter-agent vault</strong> — SQLite-backed knowledge store; any agent can write findings, credentials, or notes and query them back</li>
     <li><strong>Live monitor TUI</strong> — <code>kmcp monitor</code> shows connected users, running jobs, and server health with SSE push</li>
-    <li><strong>Safety</strong> — 3-layer timeout defense, process-tree cleanup, semaphore limits, output truncation</li>
+    <li><strong>Safety</strong> — 3-layer timeout defense, process-tree cleanup, semaphore limits, output truncation, token-auth required</li>
   </ul>
 
-  <h2>Quick Install</h2>
-  <div class="cta">
-    <code>pip install kmcp</code><br>
-    <code>kmcp start</code>
-  </div>
-
-  <p>The server listens on <code>http://0.0.0.0:8399/mcp</code> by default (HTTP/SSE or streamable-http). Point your MCP client at that URL.</p>
+  <h2>Quickstart</h2>
+  <ol>
+    <li><code>pip install kmcp</code></li>
+    <li><code>kmcp init</code> — generates <code>.env</code> with a secure <code>MCP_API_TOKEN</code></li>
+    <li><code>kmcp start</code> — boots the MCP server on <code>:8399</code> (HTTP/SSE at <code>/sse</code> or streamable-http at <code>/mcp</code>)</li>
+    <li><code>kmcp studio</code> — opens the Playbook Studio UI in your browser</li>
+  </ol>
 
   <h2>Who Is This For?</h2>
   <p>
     Security researchers, red teamers, and AI engineers building LLM-powered security workflows who want to orchestrate
-    Kali Linux tools through the Model Context Protocol — with validation, sandboxing, and shared memory between agents.
+    Kali Linux tools through the Model Context Protocol — with validation, sandboxing, required token auth, and shared
+    memory between agents.
   </p>
 
   <footer>
-    <p><a href="https://magichrist.github.io/">Magichrist</a> · Project: Kali MCP · <a href="https://github.com/magichrist/kali-mcp">GitHub</a> · <a href="https://pypi.org/project/kmcp/">PyPI</a></p>
+    <p><a href="https://magichrist.github.io/">Magichrist</a> · Project: Kali MCP · <a href="https://github.com/magichrist/kali-mcp">GitHub</a> · <a href="https://pypi.org/project/kmcp/">PyPI (kmcp)</a></p>
   </footer>
 </main>
 </body>
